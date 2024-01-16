@@ -29,6 +29,15 @@ public class Utils {
 		}
 	}
 	
+	public static Double tryParseToDouble(String str) {
+		try {
+			return Double.parseDouble(str);
+		} 
+		catch (NumberFormatException e) {
+			return null;
+		}
+	}
+	
 	public static <T> void formatTableColumnDate(TableColumn<T, Date> tableColumn, String format) {
 		tableColumn.setCellFactory(column -> {
 			TableCell<T, Date> cell = new TableCell<T, Date>() {
@@ -79,7 +88,8 @@ public class Utils {
 			public String toString(LocalDate date) {
 				if (date != null) {
 					return dateFormatter.format(date);
-				} else {
+				} 
+				else {
 					return "";
 				}
 			}
@@ -88,7 +98,8 @@ public class Utils {
 			public LocalDate fromString(String string) {
 				if (string != null && !string.isEmpty()) {
 					return LocalDate.parse(string, dateFormatter);
-				} else {
+				} 
+				else {
 					return null;
 				}
 			}
